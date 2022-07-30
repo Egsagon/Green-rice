@@ -1,0 +1,52 @@
+(defwidget confirm [name msg cmd]
+    (box
+        :orientation "vertical"
+
+        (label :text msg :class "conf-msg")
+
+        (box
+            :class "conf-btns"
+
+            (button :onclick "eww close ${name}" "No")
+            (button :onclick "eww close ${name} && ${cmd}" "Yes")
+        )
+    )
+)
+
+(defwindow conf-shutdown
+    :monitor 0
+    :geometry (geometry
+        :x "-385px" :y "-70px"
+        :width "350px" :height "100px"
+        :anchor "bottom right"
+    )
+
+    :stacking "fg" 
+    :windowtype "dialog"
+    :wm-ignore true
+
+    (confirm
+        :name "conf-shutdown"
+        :msg "Shutdown?"
+        :cmd "shutdown now"
+    )
+)
+
+(defwindow conf-restart
+    :monitor 0
+    :geometry (geometry
+        :x "-385px" :y "-70px"
+        :width "350px" :height "100px"
+        :anchor "bottom right"
+    )
+
+    :stacking "fg" 
+    :windowtype "dialog"
+    :wm-ignore true
+
+    (confirm
+        :name "conf-restart"
+        :msg "Restart?"
+        :cmd "reboot"
+    )
+)

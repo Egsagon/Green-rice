@@ -1,0 +1,138 @@
+.bar-wks, .bar-clock, .bar-tray {
+    border: 3px solid #A6D3A0;
+    border-radius: 13px;
+    background-color: #F2F9F1;
+}
+
+.clock {
+    font-size: 18px;
+    color: #656565;
+    letter-spacing: 1px;
+}
+
+.wk {
+    margin: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.wk:nth-child(1) {
+    margin-left: 20px;
+}
+
+.tray-toggler {
+    all: unset;
+    background-color: #A6D3A0;
+    color: #F2F9F1;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: 3px solid #A6D3A0;
+    border-bottom-right-radius: 13px;
+    border-top-right-radius: 13px;
+    font-size: 22px;
+}
+
+.tray-toggler:hover {
+    background-color: #F2F9F1;
+    color: #656565;
+}
+
+.pannel {
+    background-color: #656565;
+    color: #F2F9F1;
+    font-size: 18px;
+    border: 3px solid #A6D3A0;
+    border-radius: 13px;
+}
+
+.brightness {
+    all: unset;
+    margin-right: 20px;
+    min-width: 80px;
+
+}
+
+.brightness * highlight {
+    all: unset;
+    background-color: #F2F9F1;
+}
+
+.brightness * slider {
+    border: 1px solid #656565;
+    border-radius: 50%;
+}
+
+.core trough {
+    padding: 4px;
+    margin: 3px;
+    border: 1px solid #808782;
+    border-radius: 5px;
+    background-color: transparent;
+}
+.core trough :nth-child(1) {
+    background-color: #A6D3A0;
+    border: none;
+    border-radius: 5px;
+}
+
+.extray * {
+    all: unset;
+    border: 3px solid transparent;
+    border-radius: 30px;
+    margin: 5px;
+    padding: 1px;
+    padding-top: 3px;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-bottom: 12px;
+}
+
+.extray *:hover {
+    border-color: #808782;
+}
+
+.pfp * {
+    border: 1px solid #808782;
+    border-radius: 50%;
+}
+
+.sep {
+    background-color: #A6D3A0;
+}
+
+.sep * highlight {
+    background-color: #A6D3A0;
+    border: #A6D3A0;
+}
+
+.sep * slider {
+    background-color: #A6D3A0;
+    border: #A6D3A0;
+}
+
+.glava, .glava * {
+    all: unset;
+    margin-right: 10px;
+    background-color: transparent;
+}
+
+.glava * {
+    border: 1px solid #808782;
+    border-radius: 6px;
+}
+
+.conf-restart, .conf-shutdown {
+    background-color: #656565;
+    border: 3px solid #A6D3A0;
+    border-radius: 12px;
+    color: #F2F9F1;
+}
+
+.conf-msg {letter-spacing: 1px;}
+
+.conf-btns * {
+    all: unset;
+    border: 3px solid transparent;
+}
+
+.conf-btns *:hover {border-color: #A6D3A0;}

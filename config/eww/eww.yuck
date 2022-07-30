@@ -1,0 +1,119 @@
+; ------- ;
+; EWW BAR ;
+; ------- ;
+
+(include "./pannel.yuck")
+(include "./popups.yuck")
+
+; Clock
+(defpoll clock :interval "1s" :initial "00" `date +%H:%M`)
+
+; Wks
+(defpoll wks :interval "1s" :initial "{}" `i3-msg -t get_workspaces`)
+
+; Battery
+(defpoll battery :interval "5s" :initial "0" `cat /sys/class/power_supply/BAT0/capacity`)
+
+; Sidebar toggle
+(defvar pannel-toggle false)
+
+
+;Widgets
+(defwidget wks-content []
+    (box
+        :halign "start"
+        
+        (for wk in wks
+            (label
+                :text "${wk['name']}"
+                :style "color: ${wk['focused'] ? '#A6D3A0' : '#656565'}"
+                :class "wk"
+            )
+        )
+    )
+)
+
+(defwidget clock-content []
+    (box
+        :halign "center"
+
+        (label
+            :text clock
+            :class "clock"
+        )
+    )
+)
+
+(defwidget tray-content []
+    (box
+        :halign "end"
+
+        (scale
+            :min 8
+            :max 100
+            :value 100
+            :onchange "xrandr --output eDP-1 --brightness $(bc -l <<< 'scale=2; {}/100')"
+            :class "brightness"
+        )
+
+        (label
+            :text "BAT - ${battery}%"
+        )
+
+        (button
+            :onclick "eww update pannel-toggle=${!pannel-toggle} && eww ${pannel-toggle ? 'close' : 'open'} pannel"
+            :class "tray-toggler"
+
+            (label :text "${pannel-toggle ? '▲' : '▶'}")
+        )
+    )
+)
+
+
+; Windows
+(defwindow bar-wks
+    :monitor 0
+    :geometry (geometry
+        :x "16px" :y "-10px"
+        :width "800px" :height "44px"
+        :anchor "bottom left"
+    )
+
+    :stacking "bg"
+    :windowtype "dock"
+    :wm-ignore true
+
+    (wks-content)
+)
+
+(defwindow bar-clock
+    :monitor 0
+    :geometry (geometry
+        :x "0px" :y "-10px"
+        :width "240px" :height "44px"
+        :anchor "bottom center"
+    )
+
+    :stacking "bg"
+    :windowtype "dock"
+    :wm-ignore true
+
+    (clock-content)
+)
+
+(defwindow bar-tray
+    :monitor 0
+    :geometry (geometry
+        :x "-16px" :y "-10px"
+        :width "800px" :height "44px"
+        :anchor "bottom right"
+    )
+
+    :stacking "bg"
+    :windowtype "dock"
+    :wm-ignore true
+
+    (tray-content)
+)
+
+; TODO - Add Glava

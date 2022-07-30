@@ -1,0 +1,143 @@
+(defwidget pannel-content []
+    (box
+        :orientation "vertical"
+
+        ; PFP
+        (box
+            :halign "center"
+            :valign "center"
+            :class "pfp"
+            (image
+                :path "./src/pfp.png"
+                :image-width 200
+                :image-height 200
+            )
+        )
+
+        ; SYS
+        (box
+            ; CPUs
+            (box
+                :halign "center"
+
+                (for core in {EWW_CPU.cores}
+                    (progress
+                        :value "${core.usage}"
+                        :orientation "v"
+                        :flipped true
+                        :class "core"
+                    )
+                )
+            )
+
+            ; Circulars
+            (box
+                :orientation "vertical"
+
+                ; RAM
+                (circular-progress
+                    :value {EWW_RAM.used_mem_perc}
+                    :thickness 3
+
+                    (circular-progress
+                        :value 10
+                        :thickness 6
+
+                        (label
+                            :text "RAM"
+                        )
+                    )
+                )
+
+                ; NET
+                (circular-progress
+                    :value {EWW_NET.up}
+                    :thickness 3
+
+                    (circular-progress
+                        :value {EWW_NET.down}
+                        :thickness 6
+
+                        (label
+                            :text "NET"
+                        )
+                    )
+                )
+            )
+        )
+
+        ; Sound
+        (box
+            :orientation "vertical"
+            
+            ; Adjust volume
+            (box
+                :valign "center"
+                (scale
+                    :value 50
+                    :onchange "playerctl volume {}"
+                    :class "sep"
+                )
+            )
+
+            ; Glava
+            (checkbox
+                :halign "end"
+                :valign "start"
+                :class "glava"
+            )
+        )
+
+        ; Tray
+        (box
+            :class "extray"
+            :halign "center"
+            :valign "end"
+
+            (button
+                :onclick "eww open conf-shutdown"
+
+                (image
+                    :path "./src/power.png"
+                    :image-width 35
+                    :image-height 35
+                )
+            )
+            
+            (button
+                :onclick "eww open conf-restart"
+
+                (image
+                    :path "./src/restart.png"
+                    :image-width 35
+                    :image-height 35
+                )
+            )
+
+            (button
+                :onclick "i3lock"
+
+                (image
+                    :path "./src/sleep.png"
+                    :image-width 35
+                    :image-height 35
+                )
+            )
+        )
+    )
+)
+
+(defwindow pannel
+    :monitor 0
+    :geometry (geometry
+        :x "-16px" :y "-27px"
+        :width "350px" :height "994px"
+        :anchor "center right"
+    )
+
+    :stacking "bg"
+    :windowtype "dock"
+    :wm-ignore true
+
+    (pannel-content)
+)
