@@ -1,0 +1,32 @@
+{
+    "workbench.startupEditor": "none",
+    "workbench.editor.untitled.hint": "hidden",
+    "workbench.colorTheme": "Visual Studio Light",
+
+    "workbench.colorCustomizations": {
+
+        "activityBar.background": "#D7EDD4",
+        "activityBar.foreground": "#656565",
+        "activityBar.activeBackground": "#D7EDD4",
+        "activityBarBadge.background": "#A6D3A0",
+
+        "sideBar.background": "#F2F9F1",
+        "sideBar.border": "#A6D3A0",
+        "sideBarTitle.foreground": "#656565",
+
+        "tab.activeBackground": "#F2F9F1",
+        "tab.activeBorder": "#A6D3A0",
+
+        "editor.background": "#F2F9F1",
+    },
+
+    "editor.tokenColorCustomizations": {
+    
+    },
+    "workbench.statusBar.visible": false,
+    "window.menuBarVisibility": "toggle",
+    "editor.minimap.enabled": false,
+    "explorer.confirmDelete": false,
+    "window.zoomLevel": 2,
+    "security.workspace.trust.untrustedFiles": "open"
+}
